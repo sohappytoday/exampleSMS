@@ -22,4 +22,16 @@ public class Sms {
     @Column(name = "content")
     private Content content;
 
+    //생성 메서드
+    public static Sms create(User user, Content content) {
+        Sms sms = new Sms();
+        sms.user = user;
+        sms.content = content;
+        return sms;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }
