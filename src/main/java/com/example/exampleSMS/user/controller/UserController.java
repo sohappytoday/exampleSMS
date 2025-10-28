@@ -1,16 +1,24 @@
 package com.example.exampleSMS.user.controller;
 
+import com.example.exampleSMS.common.response.ApiResponse;
+import com.example.exampleSMS.user.dto.request.RegisterUserRequest;
 import com.example.exampleSMS.user.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity
+    public ResponseEntity<ApiResponse<Void>> register(@RequestBody RegisterUserRequest registerUserRequest) {
+
+        userService.registerUser(registerUserRequest);
+
+        return ResponseEntity.ok(ApiResponse.success(null));
+    }
 }
