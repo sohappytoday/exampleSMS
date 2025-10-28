@@ -57,7 +57,7 @@ public class SmsService {
                 Sms sms = Sms.create(receiver, Content.TEST);
                 smsRepository.save(sms);
             } catch (SolapiMessageNotReceivedException e) {
-                System.out.println("문자 전소 실패 : " + e.getFailedMessageList());
+                System.out.println("문자 전송 실패 : " + e.getFailedMessageList());
             } catch (Exception e) {
                 System.out.println("오류: " + e.getMessage());
             }
