@@ -1,29 +1,37 @@
 package com.example.exampleSMS.common.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
 public class ApiResponse<T> {
-
     private boolean success;
-    private int status;
+    private int code;
     private String message;
     private T data;
 
-    public static <T> ApiResponse<T> success(T data) {
-        return new ApiResponse<>(true, HttpStatus.OK.value(), "SUCCESS", data);
+    public ApiResponse(boolean success, int code, String message) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+    }
+
+    public ApiResponse(boolean success, int code, String message, T data) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
     public static <T> ApiResponse<T> success(String message, T data) {
-        return new ApiResponse<>(true, HttpStatus.OK.value(), message, data);
+        return new ApiResponse<>(true, 200, message, data);
     }
 
-    public static <T> ApiResponse<T> fail(HttpStatus status, String message) {
-        return new ApiResponse<>(false, status.value(), message, null);
+    public static <T> ApiResponse<T> failure(String message, T data) {
+        return new ApiResponse<>(false, 500, message, data);
+    }
+
+    public static <T> ApiResponse<T> success(String message) {
+        return new ApiResponse<>(true, 200, message, null);
     }
 }

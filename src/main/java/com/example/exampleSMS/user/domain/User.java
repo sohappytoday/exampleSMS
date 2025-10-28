@@ -26,7 +26,7 @@ public class User {
     @Column(name = "phone_number", nullable = false,  unique = true)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "recipient", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Sms> messages = new ArrayList<>();
 
     //생성 메서드
@@ -40,6 +40,6 @@ public class User {
     //연관관계 메서드
     public void addSms(Sms sms) {
         messages.add(sms);
-        sms.setUser(this);
+        sms.setRecipient(this);
     }
 }

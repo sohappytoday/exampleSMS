@@ -19,6 +19,6 @@ public class UserController {
 
         userService.registerUser(registerUserRequest);
 
-        return ResponseEntity.ok(ApiResponse.success(null));
+        return ResponseEntity.ok(ApiResponse.success("회원가입에 성공하였습니다."));
     }
 }
