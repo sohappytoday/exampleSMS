@@ -10,5 +10,5 @@ import java.util.List;
 @Getter
 @Setter
 public class SmsRequest {
-    private List<String> phoneNumbers;
+    private List<String> recipients;
 }

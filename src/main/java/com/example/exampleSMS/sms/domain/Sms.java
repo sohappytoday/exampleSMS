@@ -17,21 +17,22 @@ public class Sms {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User recipient;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "content")
     private Content content;
 
     //생성 메서드
-    public static Sms create(User user, Content content) {
+    public static Sms create(User recipient, Content content) {
         Sms sms = new Sms();
-        sms.user = user;
+        sms.recipient = recipient;
         sms.content = content;
         return sms;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setRecipient(User recipient) {
+        this.recipient = recipient;
     }
 
 }
