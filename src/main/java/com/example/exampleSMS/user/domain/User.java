@@ -1,6 +1,6 @@
 package com.example.exampleSMS.user.domain;
 
-import com.example.exampleSMS.sms.dto.Sms;
+import com.example.exampleSMS.sms.domain.Sms;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.exampleSMS.sms.dto;
+package com.example.exampleSMS.sms.domain;
 
 import com.example.exampleSMS.user.domain.User;
 import jakarta.persistence.*;
